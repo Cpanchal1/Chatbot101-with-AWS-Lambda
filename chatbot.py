@@ -10,8 +10,7 @@ TOKEN = "Bearer insert-bot-token-here"
 
 #Step 1: GET joke from icanhazdadjoke database
 def getJoke():
-    print("\n ...Starting getJoke function... \n")
-    
+
     url = "https://icanhazdadjoke.com"
     headers = {
         "Accept":"application/json"
@@ -23,8 +22,7 @@ def getJoke():
 
 #Step 2: POST that joke to Webex Teams Room
 def postJoke(joke):
-    print("\n ...Starting postJoke function... \n")
-    
+
     url = "https://api.ciscospark.com/v1/messages"
     headers = {
         "Authorization": TOKEN,  # Bot's access token
@@ -39,7 +37,6 @@ def postJoke(joke):
 
 
 def main(event, context):
-    print("\n ...Starting main function... \n")
     joke = getJoke()
     postJoke(joke)
     
