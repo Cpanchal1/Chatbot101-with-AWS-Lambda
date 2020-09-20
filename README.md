@@ -1,7 +1,11 @@
 # Chatbot101-with-AWS-Lambda
 Serverless (or Function-as-a-Service) environments enable developers to upload their code as a series of functions on a cloud platform, such as AWS. Despite the name, serverless functions do actually run on servers, but resources for the application are only provided as needed. Once code is uploaded, you can allow it to be triggered by certain events, such as a HTTP/REST API call.  
 
-In this lab, we will introduce how we can leverage serverless computing by creating an interactive Webex Teams chatbot. The chatbot will wait for a user to message it in Webex Teams and will respond by posting a joke. The platform we will host our code on will be AWS Lambda. 
+In this lab, we will introduce how we can leverage serverless computing through an example of creating an interactive Webex Teams chatbot. The chatbot will wait for a user to message it in Webex Teams and will respond by posting a joke. The platform we will host our code on will be AWS Lambda. 
+
+## Overall Architecture
+<... insert image here of how it all ties together ...>
+
 You will:
 1. Create a Chatbot *(Webex Developer Portal)*
 2. Code the Chatbot's actions *(Python)*
@@ -11,17 +15,17 @@ You will need:
 1. A free Webex Teams account
 2. A Webex Teams Desktop or Browser Client
 3. A free-tier Amazon AWS account
-4. Python environment on your laptop
+4. Python environment and a text editor on your laptop
 
 ## The admin stuff...
 
 ### Registering for Cisco Webex Teams
 
-During this lab we will use the Cisco Webex Teams API to both send and receive messages for the ChatBot we are going to build. To do that the first thing we do is [register](https://www.webex.com/team-collaboration.html) for a free Webex Teams account. Click 'Try Teams free' on the top left corner and complete the sign up process.
+During this lab we will use the Cisco Webex Teams API to both send and receive messages for the ChatBot we are going to build. To do that the first thing we do is [register](https://www.webex.com/team-collaboration.html) for a free Webex Teams account. Click **Try Teams free** on the top left corner and complete the sign up process.
 
 ### Install the Webex Teams client
 
-Once you've registered you may want to test out Webex Teams by sending and receiving a few messages, as during the lab we'll need to send some messages to the bot we're going to create. To do this we need to have a client. To download the client, follow to the link: https://www.webex.com/downloads.html and click the download button for the __Webex Teams__ client.
+Once you've registered you may want to test out Webex Teams by sending and receiving a few messages, as during the lab we'll need to send some messages to the bot we're going to create. To do this we need to have a client. To download the client, follow to the link: https://www.webex.com/downloads.html and click the download button for the **Webex Teams** client.
 
 Alternatively you can use the web browser client which can be found at: https://teams.webex.com
 
@@ -32,7 +36,7 @@ Now we have our Teams account we have access to the developer site for Webex Tea
 
 Your bot's access token is required to use any of the Webex APIs. In order to create rooms, post a message or retreive any details using Webex Teams APIs, your bot will use this token to authenticate itself. 
 
-To create the bot and obtain its access token, navigate to the 'My Apps' page of your account https://developer.webex.com/my-apps select 'Create New App' and when prompted choose the Bot type then complete the form which asks for Username / Bot Name, Bot Icon and a short description. Once submitted, you will then be given the access token. ***Copy and paste this to another document as we will use it later.***
+To create the bot and obtain its access token, navigate to the **My Apps** page of your account https://developer.webex.com/my-apps select **Create New App** and when prompted choose the Bot type then complete the form which asks for Username / Bot Name, Bot Icon and a short description. Once submitted, you will then be given the access token. ***Copy and paste this to another document as we will use it later.***
 
 ### Creating a Webex Teams Room
 In this section you will create a new Webex Teams space and add your bot to the space.
@@ -49,8 +53,9 @@ In this section you will create a new Webex Teams space and add your bot to the 
 ### Obtaining the Room ID 
 You will need the Room ID of the Teams Room you just created with the bot for when it comes to programming the bot's actions. 
 
-Go to www.developer.webex.com. Click on **Documentation** -> **API Reference** -> **Rooms** -> **List Rooms**. The API form is populated for you, just press **Run**.
-Find the room ID associated with the space you created earlier. It's normally the first room. Copy the "id" from the response and paste it somewhere for later use. Remember to remove the quotes.
+1. Go to www.developer.webex.com. Click on **Documentation** -> **API Reference** -> **Rooms** -> **List Rooms**. The API form is populated for you, just press **Run**.
+
+2. Find the room ID associated with the space you created earlier. It's normally the first room. Copy the "id" from the response and paste it somewhere for later use. Remember to remove the quotes.
 
 COOL! Now you have a teams space and a bot, but it's not very interesting yet. We now need to teach it how to talk and do stuff.
 
