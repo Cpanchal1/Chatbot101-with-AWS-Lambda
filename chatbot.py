@@ -5,8 +5,8 @@
 import requests
 import json
 
-ROOMID = "Y2lzY29zcGFyazovL3VzL1JPT00vNTEzOGViNTAtZjgyMy0xMWVhLWJkNzUtYjE1MjlhODIyMzkx"
-TOKEN = "Bearer YTBmOTQwOGYtY2JiNC00ODkwLThlYWQtMTI5ZjcxZGRkYTMwNWY2OTEwNjgtMDZm_PF84_1eb65fdf-9643-417f-9974-ad72cae0e10f"
+ROOMID = "insert-roomid-here"
+TOKEN = "Bearer insert-bot-token-here"
 
 #Step 1: GET joke from icanhazdadjoke database
 def getJoke():
