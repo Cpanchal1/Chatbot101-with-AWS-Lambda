@@ -146,11 +146,15 @@ Now type in the following in order to zip the dependencies:
 zip -r9 ${OLDPWD}/function.zip .
 ```
 
+![](./images/package-code-1.gif)
+
 Finally, we need to add the chatbot.py file into the zip folder. Do this by typing in the following:
 ```
 cd $OLDPWD
 zip -g function.zip chatbot.py
 ```
+
+![](./images/package-code-2.gif)
 
 ### **Step 2** - Upload to Lambda function
 
