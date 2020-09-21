@@ -162,7 +162,11 @@ Log into your AWS account, select **Services**. Under the 'Compute' section, sel
 
 Give your function a name and select Python3.8 as the runtime environment. Again, select **Create Function** to complete the process. 
 
+![](./images/create-function.gif)
+
 Now that your function has been created, you need to upload your function.zip file. You can do this by scrolling down to the 'Function Code' section and selecting **Actions** -> **Upload a .zip file**. 
+
+![](./images/upload-function.gif)
 
 Finally, let's change some settings to help our chatbot run smoothly. Scroll down to 'Basic Settings' and select **edit**. Set the handler to be chatbot.main as we want to trigger the 'main' method in the 'chatbot.py' script. Finally, change the timeout to be 1 minute so the script has enough time to fully execute. 
 
