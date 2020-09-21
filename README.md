@@ -72,6 +72,8 @@ COOL! Now you have a teams space and a bot, but it's not very interesting yet. W
 ## Coding the Chatbot
 Open your preferred text editor...time to write some code! We'll be using Python because it is a very popular language for scenarios such as this. There are many other options for runtimes to build your functions on including Go, NodeJS, Java, Ruby and .NET. If you prefer to skip ahead to the AWS stuff, you can clone the 'chatbot.py' file in this repo, replace the ROOMID and TOKEN variables to match the roomId and Bot Token you obtained earlier and move straight on to the packaging part. 
 
+![](./images/add-creds.gif)
+
 The code is made up of four components:
 
 1. The tokens we'll be needing later in the code. \
