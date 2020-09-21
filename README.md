@@ -43,6 +43,8 @@ Your bot's access token is required to use any of the Webex APIs. In order to cr
 
 To create the bot and obtain its access token, navigate to the **My Apps** page of your account https://developer.webex.com/my-apps select **Create New App** and when prompted choose the Bot type then complete the form which asks for Username / Bot Name, Bot Icon and a short description. Once submitted, you will then be given the access token. ***Copy and paste this to another document as we will use it later.***
 
+![](./images/create-bot.gif)
+
 ### Creating a Webex Teams Room
 In this section you will create a new Webex Teams space and add your bot to the space.
 
