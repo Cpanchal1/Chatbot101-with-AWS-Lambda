@@ -5,7 +5,8 @@ In this lab, we will introduce how we can leverage serverless computing through 
 Serverless (or Function-as-a-Service) environments enable developers to upload their code as a series of functions on a cloud platform, such as AWS. Despite the name, serverless functions do actually run on servers, but resources for the application are only provided as needed. Once code is uploaded, you can allow it to be triggered by certain events, such as a HTTP/REST API call.  
 
 ## Overall Architecture
-<... insert image here of how it all ties together ...>
+
+![](./images/arch.png)
 
 In this lab you will:
 
