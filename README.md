@@ -56,12 +56,16 @@ In this section you will create a new Webex Teams space and add your bot to the 
 
 5. Type the name of the Bot you created.
 
+![](./images/create-room.gif)
+
 ### Obtaining the Room ID 
 You will need the Room ID of the Teams Room you just created with the bot for when it comes to programming the bot's actions. 
 
 1. Go to www.developer.webex.com. Click on **Documentation** -> **API Reference** -> **Rooms** -> **List Rooms**. The API form is populated for you, just press **Run**.
 
 2. Find the room ID associated with the space you created earlier. It's normally the first room. Copy the "id" from the response and paste it somewhere for later use. Remember to remove the quotes.
+
+![](./images/get-token.gif)
 
 COOL! Now you have a teams space and a bot, but it's not very interesting yet. We now need to teach it how to talk and do stuff.
 
