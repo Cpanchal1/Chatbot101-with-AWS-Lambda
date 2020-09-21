@@ -149,7 +149,7 @@ zip -r9 ${OLDPWD}/function.zip .
 Finally, we need to add the chatbot.py file into the zip folder. Do this by typing in the following:
 ```
 cd $OLDPWD
-zip -g function.zip main.py
+zip -g function.zip chatbot.py
 ```
 
 ### **Step 2** - Upload to Lambda function
