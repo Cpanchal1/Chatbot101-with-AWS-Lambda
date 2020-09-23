@@ -6,7 +6,7 @@ Serverless (or Function-as-a-Service) environments enable developers to upload t
 
 ## Overall Architecture
 
-![](./images/arch.png)
+![](./images/architecture.png)
 
 In this lab you will:
 
@@ -181,11 +181,17 @@ A webhook listens out for a specific event. It subscribes to alerts and notifies
 
 ### **Step 1** - Creating the API:
 
+![](./images/create-api.gif)
+
 a. On AWS, select **Services**. Under the 'Networking & Content Delivery' section, select **API Gateway** -> **Create API**. We will build a new **REST API**. Select **Build**. Give your API a name. 
 
 b. Once finished, you'll see a mostly-empty page with an **Actions** button. Use this to **Create Resource**. Give your resource a name, e.g. 'messages' and select **Create Resource**. 
 
+![](./images/create-method.gif)
+
 c. This resource now needs REST methods assigned to it. Select **Actions** -> **Create Method**. Using the dropdown list, select **POST** and click on the tick button. Check the 'Use Lambda Proxy integration' box and type in the name of the function you created earlier in the 'Lambda Function' textbox. Save and finally use the **Actions** -> **Deploy API** tab to finish making your API. You will then see the API url which you'll need for the next step. It will end with a /resource-name where 'resource-name' is the name of the resource you created in step 1b.
+
+![](./images/deploy-api.gif)
 
 Congrats on creating your first AWS API!
 
