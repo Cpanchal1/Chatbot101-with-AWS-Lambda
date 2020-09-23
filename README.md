@@ -21,7 +21,9 @@ You will need:
 3. A free-tier Amazon AWS account
 4. Python environment and a text editor on your laptop
 
+
 ## The admin stuff...
+
 
 ### Registering for Cisco Webex Teams
 
@@ -46,6 +48,7 @@ To create the bot and obtain its access token, navigate to the **My Apps** page 
 ![](./images/create-bot.gif)
 
 ### Creating a Webex Teams Room
+
 In this section you will create a new Webex Teams space and add your bot to the space.
 
 1. Open Webex Teams and create a new teams space by pressing the "+" sign on the client
@@ -59,6 +62,7 @@ In this section you will create a new Webex Teams space and add your bot to the 
 ![](./images/create-room.gif)
 
 ### Obtaining the Room ID 
+
 You will need the Room ID of the Teams Room you just created with the bot for when it comes to programming the bot's actions. 
 
 1. Go to www.developer.webex.com. Click on **Documentation** -> **API Reference** -> **Rooms** -> **List Rooms**. The API form is populated for you, just press **Run**.
@@ -69,15 +73,16 @@ You will need the Room ID of the Teams Room you just created with the bot for wh
 
 COOL! Now you have a teams space and a bot, but it's not very interesting yet. We now need to teach it how to talk and do stuff.
 
-## Coding the Chatbot
-Open your preferred text editor...time to write some code! We'll be using Python because it is a very popular language for scenarios such as this. There are many other options for runtimes to build your functions on including Go, NodeJS, Java, Ruby and .NET. If you prefer to skip ahead to the AWS stuff, you can clone the 'chatbot.py' file in this repo, replace the ROOMID and TOKEN variables to match the roomId and Bot Token you obtained earlier and move straight on to the packaging part. 
 
-![](./images/add-creds.gif)
+## Coding the Chatbot
+
+
+Open your preferred text editor...time to write some code! We'll be using Python because it is a very popular language for scenarios such as this. There are many other options for runtimes to build your functions on including Go, NodeJS, Java, Ruby and .NET. If you prefer to skip ahead to the AWS stuff, you can clone the 'chatbot.py' file in this repo, replace the ROOMID and TOKEN variables to match the roomId and Bot Token you obtained earlier and move straight on to the packaging part. 
 
 The code is made up of four components:
 
 1. The tokens we'll be needing later in the code. \
-The variables `ROOMID` and `TOKEN` will be used later so you don't have to copy and paste the actual tokens repetitively throughout the code. It minimizes error and is far more efficient if you want to change the value. These variables are capitalised as this denotes that the contents of these variables shouldn't be changed throughout the code (not an official python rule, but followed by developer community). \
+The variables `ROOMID` and `TOKEN` will be used later so you don't have to copy and paste the actual tokens repetitively throughout the code. It minimizes error and is far more efficient if you ever want to change these values in the future. These variables are capitalised as this denotes that the contents of these variables shouldn't be changed throughout the code (not an official python rule, but followed by developer community). \
 Replace the `insert-roomid-here` with the ROOMID you obtained earlier - ensure you keep the double quotes. Replace the `insert-bot-token-here` with your bot's access token - ensure you keep the double quotes and the word `Bearer`. 
 
 
@@ -85,6 +90,8 @@ Replace the `insert-roomid-here` with the ROOMID you obtained earlier - ensure y
 ROOMID = "insert-roomid-here"
 TOKEN = "Bearer insert-bot-token-here"
 ```
+
+![](./images/add-creds.gif)
 
 2. The '`getJoke`' method which retrieves a joke from the icanhazdadjoke.com database. 
 In this method, we make one API call. The `url` variable holds the location of the API resource. The `headers` variable describes what data structure to expect, in this case, it is JSON. You can find these details, plus anything else you'd need to include in your API call, by looking through the [API Documentation](https://icanhazdadjoke.com/api). \
@@ -127,12 +134,13 @@ response = requests.request("POST", url, data=json.dumps(payload), headers=heade
 4. The '`main`' method which triggers the two methods above.
 This is the connection between retrieving the joke and posting it on to Webex Teams. First, it calls the `getJoke()` method and stores the response in a variable called `joke`. Then, it feeds this joke as a parameter when it calls the second method, `postJoke(...)`. This is also the function that will be triggered when someone tries to interact with our bot. 
 
+
 ## Packing and uploading
+
+
 Now that the code is ready, let's get it ready for AWS Lambda. In this guide, we will step through the process fairly quickly but for a more detailed explanation on these very steps, check out the 'Using Serverless computing and Lambda for Network Automation' [lab guide](https://github.com/sttrayno/Network-Automation-Serverless#mainevents-context). 
 
 ### **Step 1** - Package the dependencies our code (including the dependencies).
-
-Note - this is already done if you've cloned this repo.
 
 Using Terminal on a Mac or Command Prompt on Windows, navigate to the same directory as your 'chatbot.py' file. If you've cloned this repo, it'll be in the same folder as this README. Type the following into your terminal in order to place all dependencies into a directory called 'package':
 
@@ -170,7 +178,9 @@ Now that your function has been created, you need to upload your function.zip fi
 
 Finally, let's change some settings to help our chatbot run smoothly. Scroll down to 'Basic Settings' and select **edit**. Set the handler to be chatbot.main as we want to trigger the 'main' method in the 'chatbot.py' script. Finally, change the timeout to be 1 minute so the script has enough time to fully execute. 
 
+
 ## Triggering the Chatbot to react - APIs and Webhooks
+
 
 This is what will tie all your hard work together! We've got a chatbot. We've got instructions on what the chatbot should do. We've got our serverless function. So what are we still missing? The trigger. Your chatbot should only retrieve and post a joke on Webex Teams when you interact with it (it'd be quite annoying if it worked any other way).
 
@@ -197,9 +207,9 @@ Congrats on creating your first AWS API!
 
 ### **Step 2** - Creating the webhook:
 
- Go to www.developer.webex.com. Select **Documentation** -> **API Reference** -> **Webhooks** -> **Create a Webhook**.
+Go to www.developer.webex.com. Select **Documentation** -> **API Reference** -> **Webhooks** -> **Create a Webhook**.
 
- Here we specify what event we're listening out for:
+Here we specify what event we're listening out for:
 
 * **Authorization** Use the bot's bearer token which you copied earlier
 
@@ -213,8 +223,13 @@ Congrats on creating your first AWS API!
 
 * **filter:** We don't want the Bot to reply to every single message on Webex Teams (that would be annoying!); we only want the bot to respond with a joke when it has been specifically mentioned (e.g. @bot), so we use a filter called 'mentionedPeople'. We set 'mentionedPeople=me', where 'me' refers to the Bot in this case (because we used the Bot's authorization token). 
 
+![](./images/create-webhook.gif)
+
 Click Run to create the webhook. 
 
-You can test that it works by adding a debug node to your flow, clicking 'Deploy' and sending a message to your bot in Webex Teams. The debug node prints things out on the debug panel to the right; it's a great tool for seeing what's going through your flow. The bot won't reply with anything just yet (because we haven't programmed it to) but you'll see in your debug panel that your flow receives an alert. 
+You can test that it works by opening the Webex Teams room you created earlier and sending a message to the bot. Don't forget to mention the bot in your message using the '@' symbol! And voila...
+
+![](./images/test.gif)
+
 
 ## ....Congratulations - You've used a serverless function to create an interactive chatbot!
