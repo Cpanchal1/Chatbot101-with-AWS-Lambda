@@ -138,7 +138,7 @@ This is the connection between retrieving the joke and posting it on to Webex Te
 ## Packing and uploading
 
 
-Now that the code is ready, let's get it ready for AWS Lambda. In this guide, we will step through the process fairly quickly but for a more detailed explanation on these very steps, check out the 'Using Serverless computing and Lambda for Network Automation' [lab guide](https://github.com/sttrayno/Network-Automation-Serverless#mainevents-context). 
+Now that the code is complete, let's get it ready for AWS Lambda. There is quite a specific way that Lambda likes to have the code packaged. All the dependencies that the python code requires needs to be packaged up in a separate folder. In our python code, the `requests` library is not included in the Lambda python interpreter, so we must package this up before the upload. 
 
 ### **Step 1** - Package the dependencies our code (including the dependencies).
 
