@@ -24,6 +24,8 @@ You will need:
 
 ## The admin stuff...
 
+### Create a free-tier Amazon Web Services account
+You can create an AWS account [here](https://portal.aws.amazon.com/billing/signup#/start). You may be asked to enter your credit card details when registering for an account, but all AWS activity in lab will stay within the limits of the free tier (so you will not incur any cost from the activities from this lab).
 
 ### Registering for Cisco Webex Teams
 
@@ -142,21 +144,22 @@ Now that the code is complete, let's get it ready for AWS Lambda. There is quite
 
 ### **Step 1** - Package the dependencies our code (including the dependencies).
 
-Using Terminal on a Mac or Command Prompt on Windows, navigate to the same directory as your 'chatbot.py' file. If you've cloned this repo, it'll be in the same folder as this README. Type the following into your terminal in order to place all dependencies into a directory called 'package':
+Using Terminal on a Mac or Command Prompt on Windows, navigate to the same directory as your 'chatbot.py' file. If you've cloned this repo, it'll be in the same folder as this README. Type the following commands in order to place all dependencies into a directory called 'package':
 
 ```
 pip install --target ./package requests
 cd package
 ```
 
-Now type in the following in order to zip the dependencies:
+Now we will zip the dependencies and the python code.
+
+**On Mac:**
 ```
 zip -r9 ${OLDPWD}/function.zip .
 ```
-
 ![](./images/package-code-1.gif)
 
-Finally, we need to add the chatbot.py file into the zip folder. Do this by typing in the following:
+Next, we need to add the chatbot.py file into the zip folder. Do this by typing in the following:
 ```
 cd $OLDPWD
 zip -g function.zip chatbot.py
@@ -164,7 +167,12 @@ zip -g function.zip chatbot.py
 
 ![](./images/package-code-2.gif)
 
+**On Windows:**
+Use your mouse (not Command Prompt) to navigate to the 'Chatbot101-with-AWS-Lambda' directory. Create a new folder called 'function'. Drag both 'chatbot.py' and the 'package' folder into it. Right-click the 'function' folder -> **Send To** -> **Compressed (zipped) folder**. 
+
+Now our bot code is all ready to be uploaded!
 ### **Step 2** - Upload to Lambda function
+
 
 Log into your AWS account, select **Services**. Under the 'Compute' section, select **Lambda**. Select **Create Function** - we will be creating from scratch. 
 
