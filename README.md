@@ -1,5 +1,7 @@
 # Chatbot 101 with AWS Lambda
 
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/Cpanchal1/Chatbot101-with-AWS-Lambda)
+
 In this lab, we will introduce how we can leverage serverless computing through an example of creating an interactive Webex Teams chatbot. Our chatbot will wait for a user to message it in Webex Teams and will respond by posting a joke. For the purposes of this guide we'll host the code as a serverless function.
 
 Serverless (or Function-as-a-Service) environments enable developers to upload their code as a series of functions on a cloud platform, such as AWS. Despite the name, serverless functions do actually run on servers, but resources for the application are only provided as needed. Once code is uploaded, you can allow it to be triggered by certain events, such as a HTTP/REST API call.  
