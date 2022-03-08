@@ -44,7 +44,7 @@ def getJoke():
 #Step 2: POST that joke to Webex Teams Room
 def postJoke(joke):
 
-    url = "https://api.ciscospark.com/v1/messages"
+    url = "https://webexapis.com/v1/messages"
     headers = {
         "Authorization": TOKEN,  # Bot's access token
         "Content-Type": "application/json"
